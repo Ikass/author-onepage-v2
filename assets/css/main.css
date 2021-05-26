@@ -1,0 +1,555 @@
+
+:root {
+/**********************************
+  Color palette
+**********************************/
+  --main-100: hsl(24, 100%, 93%);
+  --main-200: hsl(22, 100%, 85%);
+  --main-300: hsl(20, 100%, 77%);
+  --main-400: hsl(18, 100%, 70%);
+  --main-500: hsl(16, 94%, 61%);
+  --main-600: hsl(14, 89%, 55%);
+  --main-700: hsl(12, 86%, 47%);
+  --main-800: hsl(10, 93%, 40%);
+  --main-900: hsl(8, 92%, 35%);
+  --main-1000: hsl(6, 96%, 26%);
+
+/* Warm grey from color palette no.18 */
+  --grey-100: hsl(40, 23%, 97%);
+  --grey-200: hsl(43, 13%, 90%);
+  --grey-300: hsl(40, 15%, 80%);
+  --grey-400: hsl(39, 11%, 69%);
+  --grey-500: hsl(41, 8%, 61%);
+  --grey-600: hsl(41, 8%, 48%);
+  --grey-700: hsl(41, 9%, 35%);
+  --grey-800: hsl(37, 11%, 28%);
+  --grey-900: hsl(40, 13%, 23%);
+  --grey-1000: hsl(42, 15%, 13%);
+}
+
+
+/*******************************
+  General Styling and Layout
+*******************************/
+
+/* Grey version */
+html {
+  color: var(--grey-700);
+  background: var(--grey-100);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.5rem;
+}
+
+/* make the body a wrapper */
+body {
+  /* max-width: 80rem; */
+  margin: 0 auto;
+  display: grid;
+  min-height: 100vh;
+  /* to make the footer 'sticky' */
+  grid-template-rows: auto 1fr auto;
+}
+
+h1 {
+  font-size: 2rem;
+  /* color: var(--main-600); */
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  /* color: var(--grey-600); */
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  /* margin-top: 2rem; */
+  /* color: var(--grey-600); */
+}
+
+p {
+  margin: 1rem 0;
+}
+
+
+/*******************************
+  Section styling
+*******************************/
+
+section {
+  /* min-height: 300px; */
+  box-sizing: border-box;
+}
+
+section li {
+  list-style: disc;
+  /* padding-left: 1rem; */
+  margin-left: 1rem;
+}
+
+/* CSS Tricks recipes for lists */
+section li::marker{
+  color: var(--main-500);
+}
+
+/* need to add breakpoints */
+/* 600px, 900px, 1200px, and 1800px  */
+/* or 540px, 720px, 960px and 1140px */
+
+/* Apple.com uses max width 980px */
+
+/* Odin project breakpoint variables:
+--breakpoint-xs: 0;
+--breakpoint-sm: 576px;
+--breakpoint-md: 768px;
+--breakpoint-lg: 992px;
+--breakpoint-xl: 1200px;
+*/
+
+.wrapper {
+  /* max-width: 540px; */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 64px 16px;
+}
+
+.wrapper--top-border {
+  border-top: 1px solid var(--grey-300);
+}
+
+.wrapper header {
+  text-align: center;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 541px) {
+  .wrapper {
+    max-width: 760px;
+  }
+}
+
+@media (min-width: 761px) {
+  .wrapper {
+    max-width: 1140px;
+    /* width: 100vw; */
+  }
+}
+
+/* for styling CTA section */
+.wrapper--flex {
+  display: flex;
+  flex-direction: column;
+}
+
+/* about page text content */
+.wrapper--text {
+  max-width: 35em;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*******************************
+  Navigation
+*******************************/
+
+nav {
+  /* border-bottom: 1px solid var(--grey-500); */
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+nav > h1 {
+  margin-right: auto;
+  padding-right: 16px;
+  font-weight: 600;
+}
+
+nav > ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 1.2rem;
+}
+
+nav li {
+  padding-right: 16px;
+  /* font-weight: 600; */
+}
+
+nav li:last-of-type {
+  padding-right: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--grey-700);
+}
+
+nav a:hover {
+  color: var(--grey-1000);
+}
+
+
+/*******************************
+  Section background colors
+*******************************/
+
+/* or maybe rename to utility-based, e.g., bg-dark etc. */
+
+.section-hero {
+  background-color: hsl(18, 100%, 70%);
+}
+
+.feature {
+  border-top: 2px solid var(--grey-600);
+}
+
+.bg-darker {
+  background-color: var(--grey-200);
+  /* color: var(--grey-800); */
+}
+
+.section-services {
+  background-color: hsl(360, 71%, 66%);
+}
+
+.section-cta {
+  background-color: var(--main-600);
+  color: var(--grey-200);
+}
+
+.section-cta h2 {
+  color: var(--grey-200);
+}
+
+/*******************************
+  Cards
+*******************************/
+
+/* A CSS Grid wrapper for displaying cards */
+.cards { /* should probably rename to .grid-cards */
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 24px auto; /* make the vertical margin a bit bigger */
+  align-items: center;
+}
+
+.img-profile {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.img-book {
+  object-fit: cover;
+}
+
+.img--shadowed--rounded {
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 hsla(209, 20%, 25%, 0.5);
+}
+
+.img--shadowed {
+  box-shadow: 0 4px 8px 0 hsla(209, 20%, 25%, 0.5);
+}
+
+.cards > img {
+  justify-self: center;
+  align-self: center;
+}
+
+.cards__item {
+  color: var(--grey-900);
+  display: flex;
+  flex-direction: column;
+  /* background-color: var(--grey-100); */
+  /* border-radius: 8px; */
+  align-items: center;
+  /* box-shadow: 0 4px 8px 0 hsla(209, 20%, 25%, 0.5); */
+  overflow: hidden; /* to keep the rounded corners */
+}
+
+.cards__item > p {
+  padding: 16px;
+  margin: 0;
+}
+
+.cards__item > ul {
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.cards__item > img {
+  margin: 0;
+  padding: 0;
+}
+
+.cards__item > h3 {
+  font-weight: bold;
+}
+
+/* styling for card text div */
+/* used in DJ services pricing cards */
+.card__text {
+  padding: 24px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card__content {
+  padding: 24px;
+}
+
+.card__content p {
+  font-size: 1.1rem;
+  margin-bottom: 48px;
+}
+
+/* styling for card UL divs  */
+.card__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+  padding: 16px;
+}
+
+/* styling for card H3 heading */
+.card__heading {
+  color: var(--grey-100);
+  margin: 24px auto;
+  font-weight: 600;
+  /* box-shadow: 0 4px 8px 0 hsla(209, 20%, 25%, 0.5); */
+  text-shadow: 2px 2px 8px hsla(209, 20%, 25%, 0.5);
+}
+
+.card__header {
+  background-color: var(--main-500);
+  color: var(--grey-100);
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+/*******************************
+  Footer
+*******************************/
+
+footer {
+  background-color: var(--grey-1000);
+  color: hsl(214, 15%, 91%);
+  padding: 24px 16px;
+  margin-top: auto;
+}
+
+footer .wrapper {
+  padding: 0;
+}
+
+.footer-nav {
+  color: var(--grey-300);
+}
+
+.footer-nav h4 {
+  margin-bottom: 1rem;
+}
+
+.footer-link {
+  color: var(--grey-400);
+  text-decoration: none;
+}
+
+.footer-link:visited {
+  color: var(--grey-500);
+}
+
+.footer-link:hover {
+  color: var(--grey-400);
+  text-decoration: underline;
+}
+
+.footer-details {
+  font-size: small;
+  color: var(--grey-400);
+  justify-content: center;
+  margin-top: 24px;
+  text-align: center;
+  /* border-top: 1px solid var(--grey-700); */
+}
+
+.footer-details a {
+  color: inherit;
+}
+
+.footer-details a:hover {
+  color: var(--grey-200);
+}
+
+.footer-details p {
+  margin: 0.5rem;
+}
+
+
+/*******************************
+  Buttons
+*******************************/
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 hsla(209, 20%, 25%, 0.5);
+  font-size: 1rem;
+  margin: 16px auto;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-main {
+  background: var(--grey-300);
+  color: var(--grey-700);
+  margin-top: auto;
+}
+
+.btn-main:hover {
+  background: var(--grey-400);
+  color: var(--grey-800)
+}
+
+.btn-main:active {
+  background: var(--grey-600);
+  color: var(--grey-100)
+}
+
+.btn-cta {
+  background: var(--grey-100);
+  color: var(--main-600);
+  border: 1px solid var(--main-700);
+}
+
+.btn-cta:hover {
+  background: var(--main-500);
+  color: var(--grey-100);
+}
+
+.btn-cta:active {
+  background: var(--main-700);
+}
+
+/*******************************
+  Forms styling, from MDN :)
+*******************************/
+
+form {
+  /* Center the form on the page */
+  margin: 0 auto;
+  /* max-width: 400px; */
+  /* Form outline */
+  padding: 1em;
+  /* border: 1px solid var(--grey-700); */
+  /* background: var(--grey-800); */
+  /* border-radius: 4px; */
+  /* box-shadow: 0 4px 8px 0 hsla(209, 20%, 25%, 0.5); */
+  /* box-shadow: 0 2px 4px 0 var(--grey-1000); */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul {
+  padding: 0;
+  margin: 0 auto;
+}
+
+form li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form li + li {
+  margin-top: 1em;
+}
+
+label {
+  /* Uniform size & alignment */
+  display: inline-block;
+  width: 90px;
+  text-align: left;
+}
+
+input,
+textarea {
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  font: 1em sans-serif;
+  /* Uniform text field size */
+  /* width: 100%; */
+  box-sizing: border-box;
+  padding: 8px 16px;
+  margin: .5rem;
+  flex: 1 1 10ch;
+  /* border-radius: 4px; */
+  /* box-shadow: inset 0 2px 2px var(--grey-600); */
+  /* Match form field borders */
+  /* border: 1px solid var(--grey-600); */
+}
+
+input [type=email] {
+  flex: 3 1 30ch;
+}
+
+.input--email {
+  flex: 3 1 30ch;
+}
+
+textarea {
+  /* Align multiline text fields with their labels */
+  vertical-align: top;
+  /* Provide space to type some text */
+  height: 5em;
+}
+
+button {
+  border: none;
+}
+
+
+
+/*******************************
+  Photo gallery
+*******************************/
+
+.photo_gallery {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+}
+
+.photo_gallery > ul > li {
+  list-style: none;
+  margin-left: auto;
+}
+
+.img-gallery {
+  object-fit: cover;
+  /* image fills in vertically */
+  width: 100%;
+  height: 100%;
+}
